@@ -78,11 +78,11 @@ metadata:
   name: ${name}
   ${labelBlock}
 spec:
-  storageClassName: manual
+  storageClassName: local
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   hostPath:
     path: "/mnt/<YOUR_PATH>"
 `;
@@ -93,22 +93,42 @@ metadata:
   name: ${name}
   ${labelBlock}
 spec:
+  storageClassName: remote
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /<YOUR_PATH>
     server: nfs-server-ip-address
 `;
     const createPersistentVolume = (pv) => {
+        let content = '';
+        let storageClassName = 'local';
         const name = createAppName(pv.name);
-        if (pv.type === 'nfs')
-            return createNFSPersistentVolume(name);
+        if (pv.type === 'nfs') {
+            content += createNFSPersistentVolume(name);
+            storageClassName = 'remote';
+        }
         else
-            return createHostPathPersistentVolume(name);
+            content += createHostPathPersistentVolume(name);
+        const pvc = `
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ${name}c
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ${storageClassName}
+`;
+        content += addSeparator(pvc);
+        return content;
     };
     const createService = (service) => {
         if (service.type === 'ClusterIP') {
