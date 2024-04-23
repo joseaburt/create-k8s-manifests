@@ -10,7 +10,7 @@ function createTemplateBuilders(appName, env, labels) {
     const namespace = `${appName}-${env}`;
     const addSeparator = (str) => `\n\n---\n\n${str}`;
     const createLabelBlock = () => {
-        if (!Object.keys(labels))
+        if (!Object.keys(labels).length)
             return '';
         let str = '\n';
         for (const [key, value] of Object.entries(labels)) {

@@ -64,7 +64,7 @@ function createTemplateBuilders(appName: string, env: string, labels: Shared['la
   const addSeparator = (str: string) => `\n\n---\n\n${str}`;
 
   const createLabelBlock = () => {
-    if (!Object.keys(labels)) return '';
+    if (!Object.keys(labels).length) return '';
     let str = '\n';
     for (const [key, value] of Object.entries(labels)) {
       str += `    ${key}: ${value}\n`;
