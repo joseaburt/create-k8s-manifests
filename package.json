@@ -1,5 +1,5 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -25,7 +25,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "create-k8s-manifests",
+  "name": "create-k8s-manifest",
   "author": "pino0071@gmail.com",
   "module": "create-k8s-manifests.esm.js",
   "devDependencies": {
