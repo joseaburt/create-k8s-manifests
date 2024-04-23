@@ -1,8 +1,8 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "create-k8s-manifests.js",
+  "typings": "create-k8s-manifests.d.ts",
   "engines": {
     "node": ">=10"
   },
@@ -10,8 +10,8 @@
     "create-k8s-manifests": "./create-k8s-manifests.js"
   },
   "files": [
-    "./index.js",
-    "./index.d.ts"
+    "./create-k8s-manifests.js",
+    "./create-k8s-manifests.d.ts"
   ],
   "scripts": {
     "build": "tsc",
