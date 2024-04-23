@@ -92,7 +92,7 @@ kind: Secret
 metadata:
   name: ${createAppName(name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 type: Opaque
 stringData:
   MY_SECRET_KEY: <Value>
@@ -104,7 +104,7 @@ kind: Secret
 metadata:
   name: ${createAppName(name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 type: kubernetes.io/dockerconfigjson
 data:
   .dockerconfigjson: <BASE_64_JSON>
@@ -117,7 +117,7 @@ kind: ConfigMap
 metadata:
   name: ${createAppName('conf-map')}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 data:
   KEY_NAME: <Value>
 
@@ -135,7 +135,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: ${name}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   storageClassName: manual
   capacity:
@@ -151,7 +151,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: ${name}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   capacity:
     storage: 1Gi
@@ -178,7 +178,7 @@ kind: Service
 metadata:
   name: ${createAppName(service.name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   type: ClusterIP
   selector:
@@ -195,7 +195,7 @@ kind: Service
 metadata:
   name: ${createAppName(service.name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   type: NodePort
   selector:
@@ -212,7 +212,7 @@ kind: Service
 metadata:
   name: ${createAppName(service.name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   type: LoadBalancer
   selector:
@@ -232,7 +232,7 @@ kind: Ingress
 metadata:
   name: ${createAppName('ingress')}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
   annotations:
   nginx.ingress.kubernetes.io/rewrite-target: /  
 spec:
@@ -263,7 +263,7 @@ kind: Deployment
 metadata:
   name: ${createAppName(deploy.name)}
   namespace: ${namespace}
-   ${labelBlock}
+  ${labelBlock}
 spec:
   replicas: 1
   selector:
